@@ -8,6 +8,11 @@ router.get("/test", (request, response) => {
 })
 
 
+router.get('/add', (req, res) => {
+    res.render('add');
+})
+
+
 router.post("/add", (request, response) => {
     let title = request.body.title;
     let description = request.body.description;
@@ -24,8 +29,8 @@ router.post("/add", (request, response) => {
         email,
         new_job
     })
-    .then(() => response.redirect("/"))
-    .catch(error => console.log(error));
+        .then(() => response.redirect("/"))
+        .catch(error => console.log(error));
 });
 
 module.exports = router
