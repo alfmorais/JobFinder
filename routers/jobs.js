@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Job = require("../models/Job");
+const { where } = require("sequelize");
 
 
 router.get("/test", (request, response) => {
@@ -32,5 +33,15 @@ router.post("/add", (request, response) => {
         .then(() => response.redirect("/"))
         .catch(error => console.log(error));
 });
+
+
+router.get('/view/:id', (request, response) => Job.findOne({
+    where: { id: request.params.id }
+}).then(job => {
+    response.render('view', {
+        job
+    });
+}).catch(error => console.log(error)));
+
 
 module.exports = router

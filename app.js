@@ -6,6 +6,8 @@ const path = require("path");
 const database = require("./database/connection");
 const bodyParser = require("body-parser");
 const Job = require("./models/Job");
+const Sequilize = require("sequelize");
+const Op = Sequilize.Op;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
